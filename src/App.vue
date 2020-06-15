@@ -1,32 +1,35 @@
 <template>
-  <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
+  <div>
+
+    <signup/>
+       
   </div>
 </template>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
+<script>
+//import HelloWorld from './components/HelloWorld';
+//import login from './components/Login';
+import Signup from './components/Signup';
 
-#nav {
-  padding: 30px;
-}
 
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
+export default { 
 
-#nav a.router-link-exact-active {
-  color: #42b983;
+  name: 'App',
+  components: {
+   //'ShowAll': ShowAll,
+   //'AddPost': AddPost,
+    //'app-header': header,
+    //'app-footer': footer
+      Signup
+  },
+  data(){
+    return{
+      
+    }
+   
+  },
+  methods:{
+    
+  }
 }
-</style>
+</script>

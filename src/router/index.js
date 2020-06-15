@@ -11,6 +11,19 @@ Vue.use(VueRouter)
     component: Home
   },
   {
+    path: '/login',
+    name: 'Login',
+    component: () => import(/* webpackChunkName: "about" */ '../views/Login.vue')
+  },
+  {
+    path: '/profile',
+    name: 'Profile',
+    component: () => import(/* webpackChunkName: "about" */ '../views/Profile.vue'),
+    meta:{
+      //needLogin:true
+      }
+  },
+  {
     path: '/about',
     name: 'About',
     // route level code-splitting
