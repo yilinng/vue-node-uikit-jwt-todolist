@@ -8,6 +8,8 @@
 		Password:<input type="password" v-model="password"><br/>
 
 		<button @click="signup">signup</button>
+
+		{{error}}
 		
 	</div>
 </template>
@@ -21,7 +23,8 @@
 			return {
 				name:'',
 				email:'',
-				password:''
+				password:'',
+				error:''
 			}
 		},
 		methods:{
@@ -31,11 +34,17 @@
 					email:this.email,
 					password:this.password
 				}
+			axios.post('http://localhost:5000/signup', newUser)
+        .then(res => {
+		this.error = '';
+		this.$router.push('/login');
+		return res
+		}, err => {
+		console.log(err.response)
+		this.error = err.response.data.error
+		})
+	
 				
-				axios.post('http://localhost:5000/signup' ,newUser)
-
-
-
 			}
 		}
 	}

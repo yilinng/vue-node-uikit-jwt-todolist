@@ -4,7 +4,7 @@
         
             <li><router-link to="/" exact>Homepage</router-link></li>
 
-            <li><router-link to="/about" exact>About</router-link></li>
+            <li><router-link to="/signup" exact>signup</router-link></li>
 
             <li><router-link to="/login" exact>Login</router-link></li>
 
