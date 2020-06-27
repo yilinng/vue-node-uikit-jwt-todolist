@@ -1,0 +1,29 @@
+
+//POST Request
+ POST  http://localhost:5000/todo
+ Content-Type: application/json
+
+ {
+     "title": "hello this test",
+     "content": "seventeen let's winning everying"
+ }
+
+
+### 
+ //GET 
+ 
+ GET http://localhost:5000/todo
+
+  
+ ### 
+//Get one
+ GET  http://localhost:5000/todo/5ef2e6ddd973ff110b8d485c
+
+ 
+### 
+PATCH  http://localhost:5000/todo/5ef2e6ddd973ff110b8d485c
+Content-Type: application/json
+
+{    "name":"crart is best!!"
+}
+

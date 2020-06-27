@@ -6,15 +6,22 @@ const cors = require('cors');
 const jwt = require('jsonwebtoken');
 const User = require('./models/User');
 
+const dotenv = require("dotenv").config();
+
 const app = express();
 
-mongoose.connect('mongodb+srv://seventeen:1717no1@cluster0-t29kp.mongodb.net/jwttest?retryWrites=true&w=majority', {useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true});
-
+//connect to db
+mongoose.connect(process.env.DB_CONNECT
+	, {useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true},
+	() => console.log("connected to db"));
 
 app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
+
+//import routes
+const authRoutes = require("./routes/auth");
 
 //routes
 app.post('/signup', (req, res, next) => {
@@ -85,9 +92,9 @@ app.get('/user', (req, res, next) => {
   })
 })
 
-const port = process.env.PORT || 5000; //端口號設定 本地5000
+// middlewares
+app.use(express.json()); // for body parser
 
-app.listen(port,  (err) => {
-  if (err) return console.log(err);
-  console.log(`Server running on port ${port}`);
-})
+//route middlewares
+app.use("/todolist", authRoutes);
+app.listen(5000, () => console.log("sever is running..."));

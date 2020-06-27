@@ -27,7 +27,20 @@ Vue.use(VueRouter)
     path: '/todolist',
     name: 'Todolist',
     component: () => import(/* webpackChunkName: "about" */ '../components/Todolist.vue')
+  },
+  {
+    path: '/todolist/:id',
+    name: 'singleTodo',
+    component: () => import(/* webpackChunkName: "about" */ '../components/singleTodo.vue')
+  },
+  {
+    path: '/todolist/:id/edit',
+    name: 'singleTodoEdit',
+    component: () => import(/* webpackChunkName: "about" */ '../components/singleTodoEdit.vue')
   }
+
+
+
   
 ]
 
