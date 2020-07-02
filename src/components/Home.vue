@@ -1,14 +1,15 @@
 <template>
   <div>
-    <button @click="logout">logout</button>
     <h1>HELLO {{ name }}</h1>
     <h2>your email is: {{ email }}</h2>
+    <button @click="logout">logout</button>
+
   </div>
 </template>
 <script>
 import axios from 'axios';
 export default {
-  name: 'Landing',
+  name: 'Home',
   data() {
     return {
       name: '',
@@ -29,10 +30,21 @@ export default {
       })
   },
   methods: {
-    logout() {
-      localStorage.clear();
+     logout(){
+      if (window.confirm("Do you want to logout??")) {
+        localStorage.clear();
       this.$router.push('/login');
-    }
+      }  
   }
 }
+}
+
 </script>
+
+<style>
+  div.todo{
+    margin: auto;
+    float: right;
+    width: 70%;
+  } 
+</style>

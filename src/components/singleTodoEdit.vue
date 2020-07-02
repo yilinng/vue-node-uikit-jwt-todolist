@@ -1,6 +1,6 @@
 <template>
     <div id="single-todo">
-    <div>
+    <div class="uk-section uk-section-default">
     <form v-on:submit.prevent>
     <label for="edit-todo">Edit a todo</label> <br>
     title:<input type="text" v-model="todo.title" required><br>
@@ -58,8 +58,9 @@ import axios from 'axios';
 </script>
 
 <style>
-#single-todo{
-    max-width: 960px;
-    margin: 0 auto;
-}
+    div.todo{
+        margin: auto;
+        float: right;
+        width: 70%;
+    }   
 </style>

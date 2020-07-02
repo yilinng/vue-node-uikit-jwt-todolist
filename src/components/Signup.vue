@@ -1,18 +1,39 @@
 <template>
-	<div>
-		
-		Name:<input type="text" v-model="name"> <br/>
+  <div class="uk-section uk-section-default .uk-margin-auto">
+    <form v-on:submit.prevent>
+      <legend class="uk-legend">Signup</legend>
+<div class="uk-margin">
+  <div class="uk-inline">  
+  <label class="uk-form-label" for="form-stacked-text">name</label>
+ <a class="uk-form-icon" href="#" uk-icon="icon: pencil"></a>
+    <input type="text" v-model="name" class="uk-input" placeholder="name here..">
+  </div>
+</div>      
+  <div class="uk-margin">
+  <div class="uk-inline">  
+  <label class="uk-form-label" for="form-stacked-text">email</label>
+ <a class="uk-form-icon" href="#" uk-icon="icon: pencil"></a>
+    <input type="text" v-model="email" class="uk-input" placeholder="email here..">
+  </div>
+</div>
 
-		Email:<input type="text" v-model="email"><br/>
+<div class="uk-margin">
+  <div class="uk-inline">
+      <label class="uk-form-label" for="form-stacked-text">password</label>
+  <a class="uk-form-icon uk-form-icon-flip" href="#" uk-icon="icon: link"></a>  
+    <input type="password" v-model="password" class="uk-input" placeholder="password here...">
+  </div>
+</div>
+    <button class="uk-button uk-button-primary" @click="signup">signup</button>
 
-		Password:<input type="password" v-model="password"><br/>
+    <a class="signuplink"><router-link to="/login" exact>login</router-link></a>
+    <p>{{error}}</p>
 
-		<button @click="signup">signup</button>
+  </form>  
+</div>
 
-		{{error}}
-		
-	</div>
 </template>
+
 <script>
 	import axios from 'axios';
 
@@ -49,3 +70,10 @@
 		}
 	}
 </script>
+<style>
+	
+  a.signuplink{
+    margin: auto;
+    padding: 20px;
+  }
+</style>

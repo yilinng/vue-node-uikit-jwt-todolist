@@ -38,8 +38,7 @@ Vue.use(VueRouter)
     name: 'singleTodoEdit',
     component: () => import(/* webpackChunkName: "about" */ '../components/singleTodoEdit.vue')
   }
-
-
+  
 
   
 ]

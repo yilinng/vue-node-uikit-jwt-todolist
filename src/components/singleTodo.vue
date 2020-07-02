@@ -1,5 +1,6 @@
 <template>
     <div id="single-todo">
+        <div class="uk-section uk-section-default">
         <section v-if="errored">
             <p>We're sorry, we're not able to retrieve this information at the moment, please try back later</p>
         </section>
@@ -18,7 +19,7 @@
 
          </section>
     </div>
-
+</div>
 </template>
 <script>
 import axios from 'axios';
@@ -57,8 +58,13 @@ import axios from 'axios';
 </script>
 
 <style>
-#single-todo{
-    max-width: 960px;
-    margin: 0 auto;
-}
+    div.todo{
+        margin: auto;
+        float: right;
+        width: 70%;
+    }   
 </style>
+
+
+
+
