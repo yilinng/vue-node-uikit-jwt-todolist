@@ -1,5 +1,5 @@
 <template>
-	<div class="todo">
+	<div id="todo">
 	<form v-on:submit.prevent class="uk-form-stacked">
 			<legend class="uk-legend">Add a todo</legend>
 	<div class="uk-margin">
@@ -15,24 +15,32 @@
         </div>
     </div>		
     <button class="uk-button uk-button-primary" @click="addnew">addnew</button>
-
-
   </form>
 
 <hr class="uk-divider-icon">
 
-  <div v-for="(todo, index) in todos"
-   v-bind:key="todo._id" v-bind:title="todo.title" v-bind:index="index" v-bind:content="todo.content" class="uk-list uk-list-striped">
-	<router-link :to="`/todolist/${todo._id}`">{{todo.title}}</router-link>
-	<p>{{todo.content}}</p>
-		
-    <button @click.prevent="deleteone(todo._id)" class="uk-button uk-button-danger">deleteone</button>
-		
-	
-  </div>
 
-  {{error}}
-	</div>
+<table class="uk-table uk-table-justify uk-table-divider"> 
+    <thead>
+        <tr>
+            <th class="uk-width-small">Table Title</th>
+            <th>Table Content</th>
+            <th>Table Edit</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr v-for="(todo, index) in todos" :key="todo.id" v-bind:index="index">
+
+            <td><router-link :to="`/todolist/${todo._id}`">{{todo.title}}</router-link>
+</td>
+            <td>{{todo.content}}</td>
+            <td><button @click.prevent="deleteone(todo._id)" class="uk-button uk-button-danger">deleteone</button></td>
+        </tr>
+       
+    </tbody>
+</table>    
+
+</div>
 </template>
 <script>
 import axios from 'axios';
@@ -44,12 +52,11 @@ import axios from 'axios';
 			todos: [],
 			title:  '', 
 			content: '',
-			error: ''
 			}
 		},
 	computed: {
-		todotitle: function(){
-			return this.todo.title
+		todotitle(){
+			return this.todo
 			
 		}
 	},
@@ -62,10 +69,9 @@ import axios from 'axios';
 				}
 			axios.post('http://localhost:5000/todolist', newTodo)
 			.then(res =>{
-			this.error = '';
-			this.todos.push({title:this.title});
-			this.todos.push({content:this.content});
-			alert('add new post');
+			this.todos.push({title:this.title,content:this.content})
+			//this.todos.push({content:this.content})
+			alert('add success!!');
 			return res
 			}, err => {
 				console.log(err.response)
@@ -73,7 +79,7 @@ import axios from 'axios';
 				alert('add failed, please try again!');
 
 			}
-			)
+			) 
 
 			
 			},
@@ -102,7 +108,7 @@ import axios from 'axios';
 </script>
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style>
-	div.todo{
+	#todo{
 		margin: auto;
 		float: right;
 		width: 70%;

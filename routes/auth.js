@@ -49,7 +49,7 @@ router.delete('/:id' , getTodo ,async(req, res) => {
 //Create one
 router.post('/', async  (req,res)  =>  {
   const todo = new Todo({
-      title: req.body.title,
+     title: req.body.title,
      content:req.body.content,
   })
   try{
