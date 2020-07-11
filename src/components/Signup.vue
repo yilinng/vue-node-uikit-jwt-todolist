@@ -27,7 +27,9 @@
     <button class="uk-button uk-button-primary" @click="signup">signup</button>
 
     <a class="signuplink"><router-link to="/login" exact>login</router-link></a>
-    <p>{{error}}</p>
+    <div class="uk-alert-danger" uk-alert v-if="error">
+        <p>{{error}}</p>
+    </div>
 
   </form>  
 </div>

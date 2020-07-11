@@ -8,7 +8,8 @@ Vue.use(VueRouter)
   {
     path: '/',
     name: 'Home',
-    component: Home
+    component: Home,
+    
   },
   {
     path: '/login',
@@ -37,6 +38,11 @@ Vue.use(VueRouter)
     path: '/todolist/:id/edit',
     name: 'singleTodoEdit',
     component: () => import(/* webpackChunkName: "about" */ '../components/singleTodoEdit.vue')
+  },
+  {
+  path: '*',
+  name: '*',
+  component: () => import('../views/error/404.vue')
   }
   
 

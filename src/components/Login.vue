@@ -17,12 +17,14 @@
     <input type="password" v-model="password" class="uk-input" placeholder="password here...">
   </div>
 </div>
-    <div class="uk-margin">
-      <div class="uk-inline">
+  <div class="uk-margin">
+    <div class="uk-inline">
     <button class="uk-button uk-button-primary" @click="login">login</button>
 
     <a class="signuplink"><router-link to="/signup" exact>signup</router-link></a>
-    <p>{{error}}</p>
+    <div class="uk-alert-danger" uk-alert v-if="error">
+        <p>{{error}}</p>
+    </div>
     </div>
 </div>
   </form>  

@@ -39,3 +39,5 @@ UIkit.use(Icons);
 <style scoped lang="less">
 
 </style>
+### node.js
+npm run server

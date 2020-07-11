@@ -1,4 +1,5 @@
 const express = require('express');
+const morgan = require('morgan');
 const bodyParser = require('body-parser')
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
@@ -7,8 +8,10 @@ const jwt = require('jsonwebtoken');
 const User = require('./models/User');
 
 const dotenv = require("dotenv").config();
-
+// express app
 const app = express();
+// HTTP request logger middleware for node.js
+app.use(morgan('dev'));
 
 //connect to db
 mongoose.connect(process.env.DB_CONNECT
