@@ -4,12 +4,10 @@ import router from './router'
 //import store from './store'
 import UIkit from 'uikit';
 import Icons from 'uikit/dist/js/uikit-icons';
-import 'vuetify/dist/vuetify.min.css'
 
 
 Vue.config.productionTip = false
 
-Vue.use(vuetify);
 
 UIkit.use(Icons);
 
