@@ -1,9 +1,25 @@
 <template>
-  <div>
-    <h1>HELLO {{ name }}</h1>
-    <h2>your email is: {{ email }}</h2>
-    <button @click="logout">logout</button>
-
+<div class="uk-container">
+    <div class="uk-child-width-1-3@m uk-grid-small uk-grid-match grid" uk-grid>
+    <div>
+        <div class="uk-card uk-card-default uk-card-body">
+            <h3 class="uk-card-title">HELLO {{ name }} welcome!</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+        </div>
+    </div>
+    <div>
+        <div class="uk-card uk-card-primary uk-card-body">
+            <h3 class="uk-card-title"><router-link to="/todolist" exact>todolist</router-link></h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+        </div>
+    </div>
+    <div>
+        <div class="uk-card uk-card-secondary uk-card-body">
+            <h3 class="uk-card-title" @click="logout">logOut</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+        </div>
+    </div>
+</div>
   </div>
 </template>
 <script>
@@ -41,10 +57,12 @@ export default {
 
 </script>
 
-<style>
-  div.todo{
-    margin: auto;
-    float: right;
-    width: 70%;
-  } 
+<style scoped>
+  .uk-card-title{
+    cursor: pointer;
+  }
+
+  .grid{
+    margin: 10px 0px;
+  }
 </style>

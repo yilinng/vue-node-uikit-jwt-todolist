@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const mongoose = require("mongoose");
+//const mongoose = require("mongoose");
 const Todo = require("../models/Todo");
 
 
@@ -14,8 +14,12 @@ router.get('/', async (req,res) => {
 })
 
 //Getting one
-router.get('/:id' , getTodo, (req,res) => {
-  res.json(res.todo)
+router.get('/:id' , getTodo, (req, res) => {
+  try{
+    res.json(res.todo)
+  }catch(err){
+    res.status(500).json({message:err.message})
+  }
 })
 
 //Update one
@@ -49,16 +53,14 @@ router.delete('/:id' , getTodo ,async(req, res) => {
 //Create one
 router.post('/', async  (req,res)  =>  {
   const todo = new Todo({
-     title: req.body.title,
-     content:req.body.content,
+    title: req.body.title,
+    content:req.body.content,
   })
   try{
     const newTodo = await todo.save()
-        res.status(201).json(newTodo)
-    
-         } catch(err) {
-             res.status(400).json({message:err.message})
-
+      res.status(201).json(newTodo)   
+      } catch(err) {
+      res.status(400).json({message:err.message})
   }
 })
 

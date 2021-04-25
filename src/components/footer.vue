@@ -11,8 +11,8 @@
 	background: black;
 	color: white;
 	width: 100%;
-	padding: 20px;
 	bottom: auto;
+	height: 20%;
 }
 
 </style>

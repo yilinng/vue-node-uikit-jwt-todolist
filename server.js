@@ -1,6 +1,5 @@
 const express = require('express');
 const morgan = require('morgan');
-const bodyParser = require('body-parser')
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 const cors = require('cors');
@@ -19,15 +18,15 @@ mongoose.connect(process.env.DB_CONNECT
 	() => console.log("connected to db"));
 
 app.use(cors());
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 
 
 //import routes
 const authRoutes = require("./routes/auth");
 
 //routes
-app.post('/signup', (req, res, next) => {
+app.post('/signup', (req, res) => {
   const newUser = new User({
     email: req.body.email,
     name: req.body.name,
@@ -45,7 +44,7 @@ app.post('/signup', (req, res, next) => {
     })
   })
 })
-app.post('/login', (req, res, next) => {
+app.post('/login', (req, res) => {
   User.findOne({ email: req.body.email }, (err, user) => {
     if (err) return res.status(500).json({
       title: 'server error',
@@ -74,7 +73,7 @@ app.post('/login', (req, res, next) => {
 })
 
 //grabbing user info
-app.get('/user', (req, res, next) => {
+app.get('/user', (req, res) => {
   let token = req.headers.token; //token
   jwt.verify(token, 'secretkey', (err, decoded) => {
     if (err) return res.status(401).json({
@@ -91,7 +90,6 @@ app.get('/user', (req, res, next) => {
         }
       })
     })
-
   })
 })
 

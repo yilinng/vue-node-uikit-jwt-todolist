@@ -23,7 +23,7 @@ export default {
   data(){
    return {
     get token (){
-            return localStorage.getItem('token')
+          return localStorage.getItem('token')
         }
     }       
   },
@@ -40,7 +40,7 @@ export default {
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-
+  width: 100%;
   min-height: 100vh;
 }
 /*  Relative to 1% of the height of the viewport*(vh)  */
